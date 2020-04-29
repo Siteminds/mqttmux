@@ -124,7 +124,9 @@ func mqttMsgHandlerFunc(r *Route) func(mqtt.Client, mqtt.Message) {
 		log.Debug("mux: extract parameter values")
 		p := extractParamValues(r, msg.Topic())
 		log.Debug("mux: execute handler")
-		r.Handler(msg, p)
+
+		// async
+		go r.Handler(msg, p)
 	}
 }
 
