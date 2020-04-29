@@ -38,3 +38,25 @@ mux.Init()
 // ...so we wait..
 <-interrupt
 ```
+
+Or checkout the `example` directory for a more extensive, working example:
+
+```shell
+> cd example
+> go run main.go
+```
+
+Output:
+
+```log
+INFO[0000] connected to MQTT broker                      uri="tcp://localhost:1883"
+INFO[0000] mux setting topic subscriptions
+DEBU[0000] setting subscription                          handler=main.deviceCMDHandler qos=1 topic=devices/+/cmd
+INFO[0000] mux done
+DEBU[0009] mux: extract parameter values
+DEBU[0009] mux: execute handler
+INFO[0009] Received command: HELLO, for device: 12345
+^CINFO[0017] received OS signal                            signal=interrupt
+INFO[0017] Done.
+>
+```
