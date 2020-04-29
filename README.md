@@ -48,7 +48,7 @@ Or checkout the `example` directory for a more extensive, working example:
 
 Output:
 
-```log
+```shell
 INFO[0000] connected to MQTT broker                      uri="tcp://localhost:1883"
 INFO[0000] mux setting topic subscriptions
 DEBU[0000] setting subscription                          handler=main.deviceCMDHandler qos=1 topic=devices/+/cmd
@@ -58,5 +58,4 @@ DEBU[0009] mux: execute handler
 INFO[0009] Received command: HELLO, for device: 12345
 ^CINFO[0017] received OS signal                            signal=interrupt
 INFO[0017] Done.
->
 ```
