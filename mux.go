@@ -11,6 +11,8 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
+var paramRegex = regexp.MustCompile(`(\:\w+)\/*`)
+
 // HandlerFunc is the function (proto-)type for message
 // handling routines
 type HandlerFunc func(mqtt.Message, MQTTParams)
@@ -34,7 +36,7 @@ type Mux struct {
 // New returns a new initialized Mux instance
 func New(cli *mqtt.Client) *Mux {
 	return &Mux{
-		re:     regexp.MustCompile(`(\:\w+)\/*`),
+		re:     paramRegex,
 		cli:    cli,
 		Routes: make(map[string]*Route),
 	}
