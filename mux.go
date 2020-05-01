@@ -11,7 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-var paramRegex = regexp.MustCompile(`(\:\w+)\/*`)
+var paramRegex = regexp.MustCompile(`(\:[^/]+)`)
 
 // HandlerFunc is the function (proto-)type for message
 // handling routines
@@ -63,7 +63,7 @@ func (p MQTTParams) Set(key, value string) {
 func (m *Mux) Handle(pattern string, qos byte, handler HandlerFunc) {
 	m.mu.Lock()
 	m.Routes[pattern] = &Route{
-		SubPattern: strings.TrimSuffix(m.re.ReplaceAllString(pattern, `+/`), "/"),
+		SubPattern: m.re.ReplaceAllString(pattern, `+`),
 		Params:     extractParams(pattern),
 		QOS:        qos,
 		Handler:    handler,
