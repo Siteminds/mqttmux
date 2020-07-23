@@ -1,3 +1,6 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/Siteminds/mqttmux)](https://goreportcard.com/report/github.com/Siteminds/mqttmux)
+[![Github Action](https://github.com/Siteminds/mqttmux/workflows/Go/badge.svg)](https://github.com/Siteminds/mqttmux/actions?query=workflow%3AGo)
+
 # mqttmux
 
 This is a Go mux-like interface for handling mqtt messages, which uses the Paho
