@@ -8,9 +8,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/Siteminds/mqttmux"
 	mqtt "github.com/eclipse/paho.mqtt.golang"
 	log "github.com/sirupsen/logrus"
+	"siteminds.dev/mqttmux"
 )
 
 func main() {

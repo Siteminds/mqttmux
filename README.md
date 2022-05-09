@@ -14,6 +14,10 @@ with the associated `HandlerFunc` as message callback function.
 
 ## Usage
 
+```
+go get -u -v siteminds.dev/mqttmux
+```
+
 Simply obtain a new mux instance using `New()`, passing in a reference to a
 `mqtt.Client`. After that new handlers can be registered to topics using the
 `Handle` method. The `mux.Init()` will subsequently do all topic subscriptions
