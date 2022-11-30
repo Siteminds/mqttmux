@@ -3,7 +3,7 @@ module siteminds.dev/mqttmux
 go 1.18
 
 require (
-	github.com/eclipse/paho.mqtt.golang v1.4.1
+	github.com/eclipse/paho.mqtt.golang v1.4.2
 	github.com/sirupsen/logrus v1.9.0
 )
 
