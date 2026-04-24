@@ -19,7 +19,7 @@ func main() {
 
 	// Handle OS signals
 	interrupt := make(chan os.Signal, 1)
-	signal.Notify(interrupt, os.Interrupt, os.Kill, syscall.SIGTERM)
+	signal.Notify(interrupt, os.Interrupt, syscall.SIGTERM)
 
 	// Get MQTT Connection
 	uri, err := url.Parse("tcp://localhost:1883")
@@ -39,11 +39,10 @@ func main() {
 	mux.Init()
 
 	// ...so we wait until we get a stop signal
-	select {
-	case s := <-interrupt:
-		log.WithFields(log.Fields{"signal": s}).Info("received OS signal")
-		mqttcli.Disconnect(2000)
-	}
+	s := <-interrupt
+	log.WithFields(log.Fields{"signal": s}).Info("received OS signal")
+	mqttcli.Disconnect(2000)
+
 	log.Info("Done.")
 }
 

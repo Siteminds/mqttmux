@@ -98,9 +98,9 @@ func extractParams(pattern string) map[int]string {
 	params := make(map[int]string)
 	parts := strings.Split(pattern, "/")
 	for i, p := range parts {
-		if strings.HasPrefix(p, ":") {
+		if after, ok := strings.CutPrefix(p, ":"); ok {
 			// we found a parameter
-			params[i] = strings.TrimPrefix(p, ":")
+			params[i] = after
 		}
 	}
 	return params
@@ -134,6 +134,6 @@ func mqttMsgHandlerFunc(r *Route) func(mqtt.Client, mqtt.Message) {
 
 // handlerName uses reflection to get the name of the
 // handler function (used for debug logging)
-func handlerName(i interface{}) string {
+func handlerName(i any) string {
 	return runtime.FuncForPC(reflect.ValueOf(i).Pointer()).Name()
 }
